@@ -7,7 +7,7 @@ class Dinosaur(Sprite):  # SPRITE ES UNA CLASE DE PIP Y LA ESTAMOS HEREDANDO EN 
     X_POS = 80
     Y_POS = 310
     JUMP_VEL = 8.5
-    Y_POS2 = 340
+    Y_POS_DUCK = 340
 
     def __init__(self):
 
@@ -52,7 +52,7 @@ class Dinosaur(Sprite):  # SPRITE ES UNA CLASE DE PIP Y LA ESTAMOS HEREDANDO EN 
 
     def run(self):
         self.dino_rect.y = self.Y_POS
-        if self.step_index < 5:
+        if self.step_index < 5:  # porque 5
             self.image = RUNNING[0]
         else:
             self.image = RUNNING[1]
@@ -62,7 +62,7 @@ class Dinosaur(Sprite):  # SPRITE ES UNA CLASE DE PIP Y LA ESTAMOS HEREDANDO EN 
         self.image = JUMPING
         if self.dino_jump:
             self.dino_rect.y -= self.jump_vel * 4
-            self.jump_vel -= 0.8
+            self.jump_vel -= 0.8  # CUANDO LLEGUE A 0 BAJA0
 
         if self.jump_vel < -self.JUMP_VEL:
             self.dino_rect.y = self.Y_POS
@@ -71,8 +71,8 @@ class Dinosaur(Sprite):  # SPRITE ES UNA CLASE DE PIP Y LA ESTAMOS HEREDANDO EN 
 
     def duck(self):
         self.image = DUCKING[0]
-        # VOLVERLO CONSTANTE # POSICION DEL DINOSAURIO CUANDO SE AGACHA
-        self.dino_rect.y = self.Y_POS2
+        # POSICION DEL DINOSAURIO CUANDO SE AGACHA
+        self.dino_rect.y = self.Y_POS_DUCK
         if self.step_index < 5:
             self.image = DUCKING[0]
         else:
